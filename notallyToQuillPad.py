@@ -2,48 +2,54 @@ import sqlite3
 import json
 import shutil
 import os
-import tempfile
 
 tags = []
 joins = []
 
+# Tested with Notally v5.2 and QuillPad v1.4.9
+# will not preserve note color
 
 def main():
 
-    # Open a database File
-    db = sqlite3.connect('NotallyDatabase.db')
+    tmpFolder = ".tmp"
 
-    c = db.cursor()
+    quillpadJSON = {"version": "13",
+                    "notes": [], "tags": []}
+
+    # Open a database File
+    shutil.unpack_archive('notally.zip', tmpFolder)
+    db = sqlite3.connect(tmpFolder + '/NotallyDatabase')
+    dbCursor = db.cursor()
 
     headers = ["ID", "type", "folder", "color", "title", "pinned",
                "timestamp", "labels", "body", "spans", "items"]
-    quillpadJSON = {"version": "13",
-                    "notes": [], "tags": []}
-    for row in c.execute("SELECT * FROM BaseNote"):
+    for row in dbCursor.execute("SELECT * FROM BaseNote"):
         note = parseNotallyNote(dict(zip(headers, row)))
-        if note is not None:
-            quillpadJSON["notes"].append(note)
+        quillpadJSON["notes"].append(note)
     db.close()
 
     quillpadJSON["tags"] = tags
     quillpadJSON["joins"] = joins
-    
-    if not os.path.exists('tmp'):
-        os.makedirs('tmp')
-    with open('tmp/backup.json', 'w') as jsonOut:
+
+    if not os.path.exists(tmpFolder):
+        os.makedirs(tmpFolder)
+    with open(tmpFolder + '/backup.json', 'w') as jsonOut:
         json.dump(quillpadJSON, jsonOut)
+
+    os.remove(tmpFolder + '/NotallyDatabase')
     shutil.make_archive(
-        "notallyBackupsInQuill", "zip", root_dir="tmp", base_dir=".")
-    shutil.rmtree('tmp')
-    print('done reading')
+        "QuillPadFromNotally", "zip", root_dir=tmpFolder, base_dir=".")
+    shutil.rmtree(tmpFolder)
 
 
 def parseNotallyNote(note):
     noteDict = {}
     noteDict['id'] = note['ID']
     noteDict['title'] = note['title']
-    noteDict['modifiedDate'] = note['timestamp']
-    noteDict['creationDate'] = note['timestamp']
+
+    timeStamp = (int)(note['timestamp']/1000)
+    noteDict['modifiedDate'] = timeStamp
+    noteDict['creationDate'] = timeStamp
 
     if (note['pinned'] == 1):
         noteDict['isPinned'] = True
