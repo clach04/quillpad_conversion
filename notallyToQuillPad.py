@@ -11,14 +11,16 @@ joins = []
 
 def main():
 
-    tmpFolder = ".tmp"
+    tmpFolder = "tmp"
 
     quillpadJSON = {"version": "13",
                     "notes": [], "tags": []}
 
+    #notally_export_filename = 'notally.zip'
+    notally_export_filename = 'Notally Backup.zip'  # seen 2024-03-18 with version ??? - FIXME argv command line
     # Open a database File
-    shutil.unpack_archive('notally.zip', tmpFolder)
-    db = sqlite3.connect(tmpFolder + '/NotallyDatabase')
+    shutil.unpack_archive(notally_export_filename, tmpFolder)
+    db = sqlite3.connect(os.path.join(tmpFolder, 'NotallyDatabase'))
     dbCursor = db.cursor()
 
     headers = ["ID", "type", "folder", "color", "title", "pinned",
@@ -33,10 +35,10 @@ def main():
 
     if not os.path.exists(tmpFolder):
         os.makedirs(tmpFolder)
-    with open(tmpFolder + '/backup.json', 'w') as jsonOut:
-        json.dump(quillpadJSON, jsonOut)
+    with open(os.path.join(tmpFolder, 'backup.json'), 'w') as jsonOut:
+        json.dump(quillpadJSON, jsonOut, indent=4)
 
-    os.remove(tmpFolder + '/NotallyDatabase')
+    os.remove(os.path.join(tmpFolder, 'NotallyDatabase'))
     shutil.make_archive(
         "QuillPadFromNotally", "zip", root_dir=tmpFolder, base_dir=".")
     shutil.rmtree(tmpFolder)
