@@ -25,3 +25,4 @@ Includes Windows support and correct file name for export (as of 2024).
 ## Other Tools
 
   * https://github.com/MolassesLover/jotbook - reverse of files_to_quillpad.py
+  * https://github.com/Eve1374/GKeepToQuillpad Google Keep converter
