@@ -21,3 +21,7 @@ including .zip extension).
 notallyToQuillPad.py modified version of https://gist.github.com/nWestie/224d14a6efd00661b5c93040c7511816
 
 Includes Windows support and correct file name for export (as of 2024).
+
+## Other Tools
+
+  * https://github.com/MolassesLover/jotbook - reverse of files_to_quillpad.py
