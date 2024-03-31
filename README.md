@@ -1,6 +1,6 @@
 # Quillpad Conversion
 
-Conversion tools for [Quillpad](https://github.com/quillpad/quillpad) (nee Quillnote) notes.
+Conversion tools for [Quillpad](https://github.com/quillpad/quillpad) (nee [Quillnote](https://github.com/msoultanidis/quillnote)) notes.
 
 Python 3 and 2 scripts for converting to QuillPad.
 
