@@ -6,13 +6,14 @@ Python 3 and 2 scripts for converting to QuillPad.
 
 ## Plain text files to QuillPad
 
-
     python files_to_quillpad.py
 
 Generates export filename based on current time/date. To specify
 filename set operating system environment variable
 `QUILLPAD_EXPORT_FILENAME` to expected filename (recommend
 including .zip extension).
+
+**WARNING** ⚠️ see https://github.com/quillpad/quillpad/issues/270 do not import more than once!
 
 ## Notally to QuillPad
 
