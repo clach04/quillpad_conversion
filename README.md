@@ -28,3 +28,4 @@ Includes Windows support and correct file name for export (as of 2024).
   * https://github.com/MolassesLover/jotbook - reverse of files_to_quillpad.py
   * https://github.com/Eve1374/GKeepToQuillpad Google Keep converter
   * https://github.com/phazejeff/colornote-to-quillpad
+  * https://github.com/clach04/pysimplenote related
