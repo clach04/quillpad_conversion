@@ -26,6 +26,7 @@ Includes Windows support and correct file name for export (as of 2024).
 ## Other Tools
 
   * https://github.com/MolassesLover/jotbook - reverse of files_to_quillpad.py
+  * https://github.com/arunk140/quillnote-server sync server (uses a sqlite3 database)
   * https://github.com/Eve1374/GKeepToQuillpad Google Keep converter
   * https://github.com/phazejeff/colornote-to-quillpad
   * https://github.com/clach04/pysimplenote related
