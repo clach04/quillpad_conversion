@@ -4,7 +4,15 @@ Conversion tools for [Quillpad](https://github.com/quillpad/quillpad) (nee [Quil
 
 Python 3 and 2 scripts for converting to QuillPad.
 
-## Plain text files to QuillPad
+## Notes
+
+QuillPad schema is not documented, see https://github.com/quillpad/quillpad/discussions/271 for now:
+
+  * Source code of these tools for examples/notes https://github.com/clach04/quillpad_conversion/blob/4697b44f65ccd0294aed92c130e8b063cda2e9c1/files_to_quillpad.py#L10
+
+## Tools
+
+### Plain text files to QuillPad
 
     python files_to_quillpad.py
 
@@ -15,7 +23,7 @@ including .zip extension).
 
 **WARNING** ⚠️ see https://github.com/quillpad/quillpad/issues/270 do not import more than once!
 
-## Notally to QuillPad
+### Notally to QuillPad
 
 [Notally](https://github.com/OmGodse/Notally) conversion to [Quillpad](https://github.com/quillpad/quillpad)
 
@@ -30,3 +38,4 @@ Includes Windows support and correct file name for export (as of 2024).
   * https://github.com/Eve1374/GKeepToQuillpad Google Keep converter
   * https://github.com/phazejeff/colornote-to-quillpad
   * https://github.com/clach04/pysimplenote related
+
