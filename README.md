@@ -27,7 +27,7 @@ including .zip extension).
 
 [Notally](https://github.com/OmGodse/Notally) conversion to [Quillpad](https://github.com/quillpad/quillpad)
 
-notallyToQuillPad.py modified version of https://gist.github.com/nWestie/224d14a6efd00661b5c93040c7511816
+notallyToQuillPad.py modified version of https://gist.github.com/nWestie/224d14a6efd00661b5c93040c7511816 (after 2023-05-17, 2nd revision).
 
 Includes Windows support and correct file name for export (as of 2024).
 
