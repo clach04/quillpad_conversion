@@ -31,6 +31,11 @@ notallyToQuillPad.py modified version of https://gist.github.com/nWestie/224d14a
 
 Includes Windows support and correct file name for export (as of 2024).
 
+Nottally features/content **not** supported during conversion:
+
+  * color
+  * attachments (images, jpg, png, voice, audio)
+
 ## Other Tools
 
   * https://github.com/MolassesLover/jotbook - reverse of files_to_quillpad.py
