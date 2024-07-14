@@ -34,7 +34,7 @@ Includes Windows support and correct file name for export (as of 2024).
 Nottally features/content **not** supported during conversion:
 
   * color
-  * attachments (images, jpg, png, voice, audio)
+  * attachments; images, jpg, png, voice/audio (feature added 2024, in https://github.com/OmGodse/Notally/releases/tag/v5.9)
 
 ## Other Tools
 
