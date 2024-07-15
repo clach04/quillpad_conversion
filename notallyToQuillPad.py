@@ -16,6 +16,43 @@ joins = []
 # will **not** preserve note color
 # does **not** handle "attachments"; images and audio/voice recordings - NOTE does include in new zip file.
 
+"""
+Notally 5.4? schema 2023-08-12
+
+    CREATE TABLE android_metadata (locale TEXT);
+    CREATE TABLE `BaseNote` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT NOT NULL, `folder` TEXT NOT NULL, `color` TEXT NOT NULL, `title` TEXT NOT NULL, `pinned` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `labels` TEXT NOT NULL, `body` TEXT NOT NULL, `spans` TEXT NOT NULL, `items` TEXT NOT NULL);
+    CREATE TABLE `Label` (`value` TEXT NOT NULL, PRIMARY KEY(`value`));
+    CREATE TABLE room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT);
+
+
+Notally 5.9 schema 2024-07-14
+
+    CREATE TABLE android_metadata (locale TEXT);
+    CREATE TABLE `BaseNote` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT NOT NULL, `folder` TEXT NOT NULL, `color` TEXT NOT NULL, `title` TEXT NOT NULL, `pinned` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `labels` TEXT NOT NULL, `body` TEXT NOT NULL, `spans` TEXT NOT NULL, `items` TEXT NOT NULL, `images` TEXT NOT NULL, `audios` TEXT NOT NULL);
+    CREATE TABLE `Label` (`value` TEXT NOT NULL, PRIMARY KEY(`value`));
+    CREATE TABLE room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT);
+
+Sample INSERTs/rows:
+
+    INSERT INTO BaseNote VALUES(1,'LIST','NOTES','DEFAULT','Todo list item created 2024-07-14',0,1721001401029,'[]','','[]','[{"body":"Item 1","checked":false},{"body":"Item 2","checked":false},{"body":"Item 3 - checked","checked":true}]','[]','[]');
+    INSERT INTO BaseNote VALUES(2,'NOTE','NOTES','DEFAULT','Note created 2024-07-14',0,1721001443718,'[]','Not content.','[]','[]','[]','[]');
+    INSERT INTO BaseNote VALUES(3,'NOTE','NOTES','DEFAULT','Pinned note',1,1721001474199,'[]','Content.','[]','[]','[]','[]');
+    INSERT INTO BaseNote VALUES(4,'NOTE','NOTES','DEFAULT','Labelled note',0,1721001487017,'["Label1"]',replace('Content here.\nHas Label1.','\n',char(10)),'[]','[]','[]','[]');
+    INSERT INTO BaseNote VALUES(5,'NOTE','NOTES','DEFAULT','Note with image',0,1721001532612,'[]','From file system, ~37Kb 1024x1024  PNG.','[]','[]','[{"name":"0fb213bf-9ec1-461f-a167-c8253b2970dc.webp","mimeType":"image\/webp"}]','[]');
+    INSERT INTO BaseNote VALUES(6,'NOTE','NOTES','DEFAULT','Audio note',0,1721001664568,'[]','Quick voice recording.','[]','[]','[]','[{"name":"f97c5c17-b824-42dd-ae7a-c26c2b23e942.m4a","duration":2560,"timestamp":1721001688940}]');
+
+    INSERT INTO Label VALUES('Label1');
+
+int/string types, with json for metadata information (todo lists, labels, attachments).
+Difference to previous:
+
+  * new columns; images and audios
+  * and in the zip file directories for above
+      * Audios - filename appears to be UUID of somekind, file extension/type m4a
+      * Images - filename appears to be UUID of somekind, file extension/type webp (unclear if lossless or lossy)
+
+"""
+
 def main():
 
     tmpFolder = "tmp"  # FIXME pick up using generated temp filename, allowing override via OS environment variables
