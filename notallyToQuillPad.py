@@ -14,7 +14,7 @@ joins = []
 
 # Tested with Notally v5.2 and QuillPad v1.4.9
 # will **not** preserve note color
-# does **not** handle "attachments"; images and audio/voice recordings
+# does **not** handle "attachments"; images and audio/voice recordings - NOTE does include in new zip file.
 
 def main():
 
