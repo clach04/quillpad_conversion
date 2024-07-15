@@ -7,11 +7,12 @@ tags = []
 joins = []
 
 # Tested with Notally v5.2 and QuillPad v1.4.9
-# will not preserve note color
+# will **not** preserve note color
+# does **not** handle "attachments"; images and audio/voice recordings
 
 def main():
 
-    tmpFolder = "tmp"
+    tmpFolder = "tmp"  # FIXME pick up using generated temp filename, allowing override via OS environment variables
 
     quillpadJSON = {"version": "13",
                     "notes": [], "tags": []}
@@ -95,3 +96,4 @@ def parseNotallyNote(note):
 
 if __name__ == "__main__":
     exit(main())
+
