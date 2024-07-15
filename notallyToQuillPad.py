@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: us-ascii -*-
+# vim:ts=4:sw=4:softtabstop=4:smarttab:expandtab
+#
+# NOTE Python3 due to use of shutil.unpack_archive()
+
 import sqlite3
 import json
 import shutil
