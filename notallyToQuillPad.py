@@ -38,8 +38,12 @@ Sample INSERTs/rows:
     INSERT INTO BaseNote VALUES(2,'NOTE','NOTES','DEFAULT','Note created 2024-07-14',0,1721001443718,'[]','Not content.','[]','[]','[]','[]');
     INSERT INTO BaseNote VALUES(3,'NOTE','NOTES','DEFAULT','Pinned note',1,1721001474199,'[]','Content.','[]','[]','[]','[]');
     INSERT INTO BaseNote VALUES(4,'NOTE','NOTES','DEFAULT','Labelled note',0,1721001487017,'["Label1"]',replace('Content here.\nHas Label1.','\n',char(10)),'[]','[]','[]','[]');
-    INSERT INTO BaseNote VALUES(5,'NOTE','NOTES','DEFAULT','Note with image',0,1721001532612,'[]','From file system, ~37Kb 1024x1024  PNG.','[]','[]','[{"name":"0fb213bf-9ec1-461f-a167-c8253b2970dc.webp","mimeType":"image\/webp"}]','[]');
-    INSERT INTO BaseNote VALUES(6,'NOTE','NOTES','DEFAULT','Audio note',0,1721001664568,'[]','Quick voice recording.','[]','[]','[]','[{"name":"f97c5c17-b824-42dd-ae7a-c26c2b23e942.m4a","duration":2560,"timestamp":1721001688940}]');
+    INSERT INTO BaseNote VALUES(5,'NOTE','NOTES','DEFAULT','Note with image',0,1721001532612,'[]',replace('From file system, ~37Kb 1024x1024  PNG\nStored as webp. TODO check if lossless or lossy.','\n',char(10)),'[]','[]','[{"name":"d9f53103-1b01-4936-b62a-5ef87d54791b.webp","mimeType":"image\/webp"}]','[]');
+    INSERT INTO BaseNote VALUES(6,'NOTE','NOTES','DEFAULT','Audio note',0,1721001664568,'[]','Quick voice recording. Stores as m4a. TODO codec details.','[]','[]','[]','[{"name":"fdda1ca6-0b0b-4a1e-a2e6-1203497f465e.m4a","duration":2560,"timestamp":1721001688940}]');
+    INSERT INTO BaseNote VALUES(8,'NOTE','DELETED','DEFAULT','Deleted note',0,1721005446277,'[]','This note has been deleted.','[]','[]','[]','[]');
+    INSERT INTO BaseNote VALUES(9,'NOTE','ARCHIVED','DEFAULT','Archived note',0,1721005471383,'[]','This note is archived.','[]','[]','[]','[]');
+    INSERT INTO BaseNote VALUES(10,'NOTE','NOTES','DEFAULT','Styled note',0,1721005515895,'[]',replace('Plain.\nBold\nItalic\nMono-space\nString-Through\nLink\nhttps://google.com\nNot a link https://google.com\nPlain again.','\n',char(10)),'[{"bold":true,"link":false,"italic":false,"monospace":false,"strikethrough":false,"start":7,"end":11},{"bold":false,"link":false,"italic":true,"monospace":false,"strikethrough":false,"start":12,"end":18},{"bold":false,"link":false,"italic":false,"monospace":true,"strikethrough":false,"start":19,"end":29},{"bold":false,"link":false,"italic":false,"monospace":false,"strikethrough":true,"start":30,"end":44},{"bold":false,"link":true,"italic":false,"monospace":false,"strikethrough":false,"start":45,"end":49},{"bold":false,"link":true,"italic":false,"monospace":false,"strikethrough":false,"start":50,"end":68}]','[]','[]','[]');
+    INSERT INTO BaseNote VALUES(11,'NOTE','NOTES','DEFAULT','Note with 2 JPEG images',0,1721005791437,'[]',replace('This was originally a JPEG\n16Kb 720x220\n\n2nd also jpeg, ~29Kb 720x449.','\n',char(10)),'[]','[]','[{"name":"403fafef-d171-4718-a0ec-efddd4d5f67b.jpg","mimeType":"image\/jpeg"},{"name":"5764ebcd-97a2-4d04-a335-ffb76285f4af.jpg","mimeType":"image\/jpeg"}]','[]');
 
     INSERT INTO Label VALUES('Label1');
 
@@ -49,7 +53,7 @@ Difference to previous:
   * new columns; images and audios
   * and in the zip file directories for above
       * Audios - filename appears to be UUID of somekind, file extension/type m4a
-      * Images - filename appears to be UUID of somekind, file extension/type webp (unclear if lossless or lossy)
+      * Images - filename appears to be UUID of somekind, file extension/type webp or jpeg (unclear if webp lossless or lossy)
 
 """
 
